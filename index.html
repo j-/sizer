@@ -1,0 +1,78 @@
+<!doctype html>
+<meta charset="utf-8">
+
+<title>Sizer</title>
+
+<table>
+	<tr>
+		<th class="inner width label"><pre>innerWidth</pre></th>
+		<td class="inner width value"><pre id="value-inner-width"></pre></td>
+		<th class="outer width label"><pre>outerWidth</pre></th>
+		<td class="outer width value"><pre id="value-outer-width"></pre></td>
+	</tr>
+	<tr>
+		<th class="inner height label"><pre>innerHeight</pre></th>
+		<td class="inner height value"><pre id="value-inner-height"></pre></td>
+		<th class="outer height label"><pre>outerHeight</pre></th>
+		<td class="outer height value"><pre id="value-outer-height"></pre></td>
+	</tr>
+</table>
+
+<style>
+html,
+body,
+table {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+}
+table {
+	border-collapse: collapse;
+	font-size: 4.5vw;
+}
+th,
+td,
+pre {
+	margin: 0;
+	padding: 0;
+}
+th {
+	padding-left: 1em;
+	text-align: left;
+}
+td {
+	padding-right: 1em;
+	text-align: right;
+}
+.outer.width,
+.inner.height {
+	background-color: #fff;
+}
+.inner.width,
+.outer.height {
+	background-color: #eee;
+}
+</style>
+
+<script>
+(function () {
+
+const innerWidthOutput = document.querySelector('#value-inner-width');
+const innerHeightOutput = document.querySelector('#value-inner-height');
+const outerWidthOutput = document.querySelector('#value-outer-width');
+const outerHeightOutput = document.querySelector('#value-outer-height');
+
+const displayMetrics = () => {
+	innerWidthOutput.textContent = window.innerWidth;
+	innerHeightOutput.textContent = window.innerHeight;
+	outerWidthOutput.textContent = window.outerWidth;
+	outerHeightOutput.textContent = window.outerHeight;
+};
+
+displayMetrics();
+
+window.addEventListener('resize', displayMetrics);
+
+})();
+</script>
