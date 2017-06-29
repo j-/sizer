@@ -63,16 +63,25 @@ const innerHeightOutput = document.querySelector('#value-inner-height');
 const outerWidthOutput = document.querySelector('#value-outer-width');
 const outerHeightOutput = document.querySelector('#value-outer-height');
 
-const displayMetrics = () => {
+const handleResize = () => {
 	innerWidthOutput.textContent = window.innerWidth;
 	innerHeightOutput.textContent = window.innerHeight;
 	outerWidthOutput.textContent = window.outerWidth;
 	outerHeightOutput.textContent = window.outerHeight;
+
+	if (window.opener) {
+		window.opener.postMessage({
+			innerWidth: window.innerWidth,
+			innerHeight: window.innerHeight,
+			outerWidth: window.outerWidth,
+			outerHeight: window.outerHeight,
+		}, '*');
+	}
 };
 
-displayMetrics();
+handleResize();
 
-window.addEventListener('resize', displayMetrics);
+window.addEventListener('resize', handleResize);
 
 })();
 </script>
